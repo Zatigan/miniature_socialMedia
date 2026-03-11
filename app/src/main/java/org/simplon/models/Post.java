@@ -4,17 +4,18 @@ import java.util.Date;
 import java.util.List;
 
 public class Post extends Message {
+
     private int like;
     private List<Commentary> commentaires;
 
-    public Post(int id, String description, Date timestamp, User creator) {
-        super(id, description, timestamp, creator);
-    }
-
-    public Post(int id, String description, Date timestamp, User creator, int like, List<Commentary> commentaires) {
-        super(id, description, timestamp, creator);
+    public Post(String description, Date timestamp, User creator, int like, List<Commentary> commentaires) {
+        super(description, timestamp, creator);
         this.like = like;
         this.commentaires = commentaires;
+    }
+ 
+    public Post(String description, Date timestamp, User creator) {
+        super(description, timestamp, creator);
     }
 
     public String getCreatorName(){

@@ -20,7 +20,8 @@ public class FeedController extends HttpServlet{
     List<Post> posts = new ArrayList<Post>();
 
     public void init(){
-        posts.add(new Post(0,"blabla",new Date(),new User("Ael","123456","vg.gu@gmx.com" , new ArrayList<>(), new ArrayList<>()),0,new ArrayList<>()));
+        User ael = new User("Ael","123456","vg.gu@gmx.com" , new ArrayList<>(), new ArrayList<>());
+        posts.add(new Post("blabla",new Date(),ael,0,new ArrayList<>()));
     }
 
     @Override
@@ -32,6 +33,17 @@ public class FeedController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             
+        //Créer une condition qui vérifie l'existence d'une session ?
+        //Créer un try catch qui try la session, et qui catch quand pas de session ?
+
+            if(req.getParameter("createPostButton") != null){
+                System.out.print("ici");
+                Date newDate = new Date();
+                User ael = new User("Ael","123456","vg.gu@gmx.com" , new ArrayList<>(), new ArrayList<>());
+                String newDescription = req.getParameter("descriptionPostInput");
+                posts.add(new Post(newDescription,newDate,ael,0,new ArrayList<>()));
+                resp.sendRedirect("/feed");
+            }
     }
 
     

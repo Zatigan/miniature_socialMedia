@@ -1,15 +1,22 @@
 package org.simplon.models;
 
 import java.util.Date;
+import java.util.UUID;
 
 public abstract class Message {
- private int id;
+
+ private int nbOfMessage = 0;
+ private UUID id;
  private String description;
  private Date timestamp;
  private User creator;
 
- public Message(int id, String description, Date timestamp,User creator) {
-  this.id = id;
+ public Message(){
+    this.id = UUID.randomUUID();
+ }
+
+ public Message(String description, Date timestamp, User creator) {
+  this();
   this.description = description;
   this.timestamp = timestamp;
   this.creator = creator;
@@ -22,10 +29,10 @@ public abstract class Message {
   this.creator = creator;
  }
  
- public int getId() {
-  return id;
+ public String getId() {
+  return id.toString();
  }
- public void setId(int id) {
+ public void setId(UUID id) {
   this.id = id;
  }
  public String getDescription() {

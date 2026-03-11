@@ -2,8 +2,7 @@
 <%@ page import="org.simplon.models.Post" %>
 <%@ page import="java.util.List" %>
 
-<%!
-%><%
+<%
     List<Post> posts = (List<Post>) request.getAttribute("postList");
 %>
 
@@ -18,22 +17,24 @@
     <h1>Welcome to Feed</h1>
     <main>
         <section>
-            <form>
+            <form action="" method="post">
                 <input type="text" name="descriptionPostInput">
-                <button>Créer un post</button>
+                <button type="submit" name="createPostButton">Créer un post</button>
             </form>
         </section>
-        <section>
-            <ul>
-                <%for(Post post : posts){%>
-                        <li name="<%=post.getId()%>">
+        <ul>
+            <%for(Post post : posts){%>
+                <li>
+                    <a href=<%=post.getId()%>>
+                        <section id="card" name="<%=post.getId()%>">
                             <p><%=post.getCreatorName()%></p>
                             <time><%=post.getTimestamp()%></time>
                             <p><%=post.getDescription()%></p>
-                        </li>
-                <%}%>
-            </ul>
-        </section>
+                        </section>
+                    </a>
+                </li>
+            <%}%>
+        </ul>
     </main>
 </body>
 </html>

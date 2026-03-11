@@ -17,7 +17,7 @@
             </label>
             <label>
                 Password :
-                <input type="text" name="passwordLogin" required>
+                <input type="password" name="passwordLogin" required>
             </label>
             <button name="loginButton">Login</button>
         </form>
