@@ -16,12 +16,18 @@ repositories {
 }
 
 dependencies {
+var tomcatVersion = "11.0.18"
+    // Serveur web
+    implementation("org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}")
+    // Jasper est un système de template
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}")
+
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    // This dependency is used by the application.
+    // This dependency is used by the applicFation.
     implementation(libs.guava)
 }
 
