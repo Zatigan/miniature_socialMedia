@@ -9,5 +9,18 @@
 </head>
 <body>
     <h1>Login</h1>
+    <main>
+        <form method="post">
+            <label>
+                Username :
+                <input type="text" name="usernameLogin" required>
+            </label>
+            <label>
+                Password :
+                <input type="text" name="passwordLogin" required>
+            </label>
+            <button name="loginButton">Login</button>
+        </form>
+    </main>
 </body>
 </html>

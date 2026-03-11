@@ -1,10 +1,11 @@
 package org.simplon.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
- private int id;
+ private static long nbOfUsers = 0;
+
+ private long id;
  private String pseudo;
  private String password;
  private String email;
@@ -12,23 +13,24 @@ public class User {
  private List<Integer> createdPostId;
 
  public User() {
+  id = ++nbOfUsers;
  }
 
- public User(int id, String pseudo, String password, String email, List<User> usersSuivis,
+ public User(String pseudo, String password, String email, List<User> usersSuivis,
    List<Integer> createdPostId) {
-  this.id = id;
+  this();
   this.pseudo = pseudo;
   this.password = password;
   this.email = email;
-  this.usersSuivis = new ArrayList<>();
-  this.createdPostId = new ArrayList<>();
+  this.usersSuivis = usersSuivis;
+  this.createdPostId = createdPostId;
  }
 
- public int getId() {
+ public long getId() {
   return id;
  }
 
- public void setId(int id) {
+ public void setId(long id) {
   this.id = id;
  }
 
@@ -70,8 +72,11 @@ public class User {
  
  public void setCreatedPostId(List<Integer> createdPostId) {
   this.createdPostId = createdPostId;
+ }
+
+ @Override
+ public String toString() {
+  return "User [pseudo=" + pseudo + ", password=" + password + ", email=" + email + "]";
  } 
- 
- 
 
 }

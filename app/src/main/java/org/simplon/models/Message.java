@@ -6,13 +6,22 @@ public abstract class Message {
  private int id;
  private String description;
  private Date timestamp;
+ private User creator;
 
- public Message(int id, String description, Date timestamp) {
+ public Message(int id, String description, Date timestamp,User creator) {
   this.id = id;
   this.description = description;
   this.timestamp = timestamp;
+  this.creator = creator;
  }
 
+ public User getCreator() {
+  return creator;
+ }
+ public void setCreator(User creator) {
+  this.creator = creator;
+ }
+ 
  public int getId() {
   return id;
  }
