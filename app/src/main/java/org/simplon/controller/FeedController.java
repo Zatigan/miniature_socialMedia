@@ -13,20 +13,21 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.simplon.service.PostService;
 
 @WebServlet(name="feedController", urlPatterns ="/feed")
 public class FeedController extends HttpServlet{
 
-    List<Post> posts = new ArrayList<Post>();
 
     public void init(){
         User ael = new User("Ael","123456","vg.gu@gmx.com" , new ArrayList<>(), new ArrayList<>());
-        posts.add(new Post("blabla",new Date(),ael,0,new ArrayList<>()));
+
+        PostService.addPost(new Post("blabla",new Date(),ael,0,new ArrayList<>()));
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("postList",posts);
+        req.setAttribute("postList",PostService.getPosts());
         req.getRequestDispatcher("/feed.jsp").forward(req, resp);
     }
 
@@ -41,7 +42,7 @@ public class FeedController extends HttpServlet{
                 Date newDate = new Date();
                 User ael = new User("Ael","123456","vg.gu@gmx.com" , new ArrayList<>(), new ArrayList<>());
                 String newDescription = req.getParameter("descriptionPostInput");
-                posts.add(new Post(newDescription,newDate,ael,0,new ArrayList<>()));
+                PostService.addPost(new Post(newDescription,newDate,ael,0,new ArrayList<>()));
                 resp.sendRedirect("/feed");
             }
     }

@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 
 <%
-    Post post = request.getAttribute("post");
+    Post post = (Post) request.getAttribute("post");
 %>
 
 <!DOCTYPE html>
