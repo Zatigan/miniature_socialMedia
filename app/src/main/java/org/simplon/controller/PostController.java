@@ -21,9 +21,7 @@ public class PostController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println(req.getPathInfo().substring(1));
         Post post =  PostService.getById(req.getPathInfo().substring(1));
-        System.out.println(post);
         req.setAttribute("post",post);
         req.getRequestDispatcher("/post.jsp").forward(req,resp);
     }

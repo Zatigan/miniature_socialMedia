@@ -33,6 +33,8 @@ public class App {
         // Contexte server web
         Context ctx = tomcat.addWebapp("", publicFolder.getAbsolutePath());
 
+        ctx.addWelcomeFile("login");
+
         //Lire les classes Java avec l'annotation @WebServlet automatiquement
         File classesFolder = new File("build/classes/java/main");
 

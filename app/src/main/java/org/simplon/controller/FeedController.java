@@ -38,7 +38,6 @@ public class FeedController extends HttpServlet{
         //Créer un try catch qui try la session, et qui catch quand pas de session ?
 
             if(req.getParameter("createPostButton") != null){
-                System.out.print("ici");
                 Date newDate = new Date();
                 User ael = new User("Ael","123456","vg.gu@gmx.com" , new ArrayList<>(), new ArrayList<>());
                 String newDescription = req.getParameter("descriptionPostInput");
