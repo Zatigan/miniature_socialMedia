@@ -29,8 +29,8 @@ public class FeedController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        User user = (User) session.getAttribute("user");
-        if (user != null) {
+
+        if ((User) session.getAttribute("user") != null) {
             req.setAttribute("postList", PostService.getPosts());
             req.getRequestDispatcher("/feed.jsp").forward(req, resp);
         } else {
@@ -51,6 +51,13 @@ public class FeedController extends HttpServlet {
             PostService.addPost(new Post(newDescription, newDate, ael, 0, new ArrayList<>()));
             resp.sendRedirect("/feed");
         }
+
+        if (req.getParameter("disconnect") != null) {
+            HttpSession session = req.getSession();
+            session.setAttribute("user", null);
+            resp.sendRedirect("/");
+        }
+
     }
 
 }

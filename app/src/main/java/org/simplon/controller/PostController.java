@@ -27,6 +27,7 @@ public class PostController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
+
         if (user != null) {
             Post post = PostService.getById(req.getPathInfo().substring(1));
             req.setAttribute("post", post);
@@ -46,6 +47,12 @@ public class PostController extends HttpServlet {
             String newDescription = req.getParameter("commentaryPostInput");
             post.setCommentaires(new Commentary(newDescription, newDate, ael));
             resp.sendRedirect("/post/" + req.getPathInfo().substring(1));
+        }
+
+        if (req.getParameter("disconnect") != null) {
+            HttpSession session = req.getSession();
+            session.setAttribute("user", null);
+            resp.sendRedirect("/");
         }
     }
 
