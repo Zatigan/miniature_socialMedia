@@ -41,14 +41,12 @@ public class FeedController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // Créer une condition qui vérifie l'existence d'une session ?
-        // Créer un try catch qui try la session, et qui catch quand pas de session ?
 
         if (req.getParameter("createPostButton") != null) {
             Date newDate = new Date();
-            User ael = new User("Ael", "123456", "vg.gu@gmx.com", new ArrayList<>(), new ArrayList<>());
+            User user = (User) req.getSession().getAttribute("user");
             String newDescription = req.getParameter("descriptionPostInput");
-            PostService.addPost(new Post(newDescription, newDate, ael, 0, new ArrayList<>()));
+            PostService.addPost(new Post(newDescription, newDate, user, 0, new ArrayList<>()));
             resp.sendRedirect("/feed");
         }
 
