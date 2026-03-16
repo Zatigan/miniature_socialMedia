@@ -52,7 +52,9 @@ public class FeedController extends HttpServlet {
 
         if (req.getParameter("disconnect") != null) {
             HttpSession session = req.getSession();
-            session.setAttribute("user", null);
+            /* Option 1 : session.setAttribute("user", null); => présente dans le doPost de PostController */
+            /* Option 2 :  */
+            session.invalidate();
             resp.sendRedirect("/");
         }
 

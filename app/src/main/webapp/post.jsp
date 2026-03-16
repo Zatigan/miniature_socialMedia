@@ -12,11 +12,15 @@
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width">
                         <link href="/styles/feed.css" rel="stylesheet" />
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
                         <title>Post</title>
                     </head>
 
                     <body>
                         <header>
+                            <form action="" method="post">
+                                <i class="fa-solid fa-arrow-left fa-3x"></i>
+                            </form>
                             <h1>Post de <%=post.getCreatorName()%>
                             </h1>
                             <form action="" method="post">
