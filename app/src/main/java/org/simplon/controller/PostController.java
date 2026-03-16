@@ -12,6 +12,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import org.simplon.models.Post;
 import org.simplon.models.User;
 import org.simplon.service.PostService;
@@ -23,23 +25,28 @@ public class PostController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Post post =  PostService.getById(req.getPathInfo().substring(1));
-        req.setAttribute("post",post);
-        req.getRequestDispatcher("/post.jsp").forward(req,resp);
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            Post post = PostService.getById(req.getPathInfo().substring(1));
+            req.setAttribute("post", post);
+            req.getRequestDispatcher("/post.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect("/login");
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-        if(req.getParameter("createCommentaryButton") != null){
-            Post post =  PostService.getById(req.getPathInfo().substring(1));
+        if (req.getParameter("createCommentaryButton") != null) {
+            Post post = PostService.getById(req.getPathInfo().substring(1));
             Date newDate = new Date();
-            User ael = new User("Ael","123456","vg.gu@gmx.com" , new ArrayList<>(), new ArrayList<>());
+            User ael = new User("Ael", "123456", "vg.gu@gmx.com", new ArrayList<>(), new ArrayList<>());
             String newDescription = req.getParameter("commentaryPostInput");
-            post.setCommentaires(new Commentary(newDescription,newDate,ael));
-            resp.sendRedirect("/post/"+req.getPathInfo().substring(1));
+            post.setCommentaires(new Commentary(newDescription, newDate, ael));
+            resp.sendRedirect("/post/" + req.getPathInfo().substring(1));
         }
     }
- 
+
 }
