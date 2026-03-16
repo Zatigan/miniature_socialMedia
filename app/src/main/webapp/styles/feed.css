@@ -49,6 +49,11 @@ header {
         box-shadow: none;
         display: flex;
         justify-content: center;
+
+        .backArrow {
+            background-color: #00000000;
+
+        }
     }
 }
 

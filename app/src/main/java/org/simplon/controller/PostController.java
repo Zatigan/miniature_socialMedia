@@ -49,6 +49,10 @@ public class PostController extends HttpServlet {
             resp.sendRedirect("/post/" + req.getPathInfo().substring(1));
         }
 
+        if (req.getParameter("backArrow") != null) {
+            resp.sendRedirect("/feed");
+        }
+
         if (req.getParameter("disconnect") != null) {
             HttpSession session = req.getSession();
             session.setAttribute("user", null);
