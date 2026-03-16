@@ -34,6 +34,21 @@ main {
     padding: 0 15px;
 }
 
+header {
+    width: 100%;
+    max-width: 600px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+
+    form {
+        background-color: var(--bg-color);
+        border: none;
+        padding: 25px 0;
+    }
+
+}
+
 /* --- Formulaires (Login, Register, Posts) --- */
 form {
     background: var(--card-bg);
@@ -49,13 +64,16 @@ form {
 label {
     font-weight: 600;
     font-size: 0.9rem;
-    margin-bottom: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 input[type="text"],
 input[type="password"],
 input[type="email"] {
     padding: 10px;
+    margin-left: 10px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background-color: #fafafa;
