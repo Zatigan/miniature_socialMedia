@@ -3,9 +3,10 @@
 ```mermaid
 classDiagram
 
-post <|-- commentaire
+message <|-- post
+message <|-- commentaire
 post *-- commentaire : contient (*)
-user *-- post
+user *-- message
 
 class user{
 	-int id
@@ -17,17 +18,23 @@ class user{
 	+ajoutUserSuivi()
 }
 
+class message{
+	<<abstract>>
+	- int nbOfMessage
+	- UUID id
+	- String description
+	- Date timestamp
+	- User creator
+}
+
 class post{
-	-int id
-	-String description
 	-int likes
-	-Date timestamp
+	-List<Commentary> commentaires
 	+ajoutLike()
 	+ajoutCommentaire()
 }
 
 class commentaire{
-	-int id
 }
 
 ```
