@@ -59,5 +59,4 @@ public class PostController extends HttpServlet {
             resp.sendRedirect("/");
         }
     }
-
 }
