@@ -43,9 +43,9 @@ public class PostController extends HttpServlet {
         if (req.getParameter("createCommentaryButton") != null) {
             Post post = PostService.getById(req.getPathInfo().substring(1));
             Date newDate = new Date();
-            User ael = new User("Ael", "123456", "vg.gu@gmx.com", new ArrayList<>(), new ArrayList<>());
+            User user = (User) req.getSession().getAttribute("user");
             String newDescription = req.getParameter("commentaryPostInput");
-            post.setCommentaires(new Commentary(newDescription, newDate, ael));
+            post.setCommentaires(new Commentary(newDescription, newDate, user));
             resp.sendRedirect("/post/" + req.getPathInfo().substring(1));
         }
 
