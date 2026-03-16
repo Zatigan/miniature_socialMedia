@@ -53,6 +53,10 @@ public class LoginController extends UserController {
 
   }
 
+  if (req.getParameter("createAccount") != null) {
+   resp.sendRedirect("/register");
+  }
+
  }
 
 }
