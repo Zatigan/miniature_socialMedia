@@ -6,6 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <link href="/styles/feed.css" rel="stylesheet"/>
         <title>Register</title>
     </head>
 

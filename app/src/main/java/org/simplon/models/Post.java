@@ -34,8 +34,8 @@ public class Post extends Message {
         return commentaires;
     }
 
-    public void setCommentaires(List<Commentary> commentaires) {
-        this.commentaires = commentaires;
+    public void setCommentaires(Commentary commentaires) {
+        this.commentaires.add(commentaires);
     }
 
 }
