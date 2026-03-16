@@ -24,6 +24,8 @@ public class User {
   this.email = email;
   this.usersSuivis = usersSuivis;
   this.createdPostId = createdPostId;
+  //Créer un boolean session ? Par défaut false, lors du log true
+  //Si variable true alors accès à Post / Feed ?
  }
 
  public long getId() {
