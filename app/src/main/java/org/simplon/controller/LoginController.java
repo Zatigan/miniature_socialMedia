@@ -39,7 +39,7 @@ public class LoginController extends UserController {
 
      if (user.getPassword().equals(passwordLogin)) {
       HttpSession session = req.getSession();
-      session.setAttribute("user", user.getId());
+      session.setAttribute("user", user);
       resp.sendRedirect("/feed");
       break;
      }
