@@ -39,7 +39,8 @@ class commentaire{
 ```
 
 ```
-src/com/votreprojet/
+src/main/java/org/simplon
+
 ├── presentation/                      <- COUCHE PRÉSENTATION : Gère le HTTP
 │   ├── webapp/
 │       ├── feed.jsp                   <- Entité métier principale
@@ -55,10 +56,7 @@ src/com/votreprojet/
 │       ├── LoginController.java
 │       ├── PostController.java
 │       ├── RegisterController.java
-│       ├── UserController.java
-│   ├── dto/
-│   │   ├── UserRegistrationDTO.java   <- Objet simple pour transporter les données en entrée
-│   │   └── UserResponseDTO.java       <- Objet simple pour transporter les données en sortie
+│       └── UserController.java
 │
 ├── domain/                            <- COUCHE DOMAINE : Cœur métier indépendant
 │   ├── model/
@@ -72,8 +70,7 @@ src/com/votreprojet/
 │       └── UserNotEligibleException.java <- Exception purement métier (ex: âge minimum non respecté)
 │
 └── infrastructure/                    <- COUCHE INFRASTRUCTURE : Détails techniques
-    ├── persistence/
-    │   ├── PostgresUserRepository.java<- Implémentation réelle de UserRepository (JDBC/SQL)
-    │   └── InMemoryUserRepository.java<- Implémentation en mémoire de UserRepository
+│   └── service/
+│       └── PostService.java
 └── App.java                          <- porte d'entrée du programme
 ```
